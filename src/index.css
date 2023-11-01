@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  --scroll-behavior: smooth !important;
+  scroll-behavior: smooth !important;
+}
+
+.section-title {
+  @apply text-3xl lg:text-5xl uppercase;
+}
+
+/* COMMON STYLES */
+.wrapper {
+  @apply container mx-auto px-5 md:px-0;
+}
+
+.section-padding {
+  @apply py-10 md:py-10;
+}
+
+.photo1 {
+  background-image: linear-gradient(
+      to right,
+      rgba(107, 114, 128, 0.5),
+      rgba(17, 24, 39, 0.5)
+    ),
+    url("https://images.pexels.com/photos/7006682/pexels-photo-7006682.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.photo2 {
+  background-image: linear-gradient(
+      to right,
+      rgba(107, 114, 128, 0.5),
+      rgba(17, 24, 39, 0.5)
+    ),
+    url("https://images.pexels.com/photos/7565174/pexels-photo-7565174.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.photo3 {
+  background-image: linear-gradient(
+      to right,
+      rgba(107, 114, 128, 0.5),
+      rgba(17, 24, 39, 0.5)
+    ),
+    url("https://images.pexels.com/photos/7565163/pexels-photo-7565163.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.photo4 {
+  background-image: linear-gradient(
+      to right,
+      rgba(107, 114, 128, 0.5),
+      rgba(17, 24, 39, 0.5)
+    ),
+    url("https://images.pexels.com/photos/7565171/pexels-photo-7565171.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.photo5 {
+  background-image: linear-gradient(
+      to right,
+      rgba(107, 114, 128, 0.75),
+      rgba(17, 24, 39, 0.75)
+    ),
+    url("https://images.pexels.com/photos/7568428/pexels-photo-7568428.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
