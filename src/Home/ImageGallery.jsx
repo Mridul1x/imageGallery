@@ -16,6 +16,7 @@ import {
 
 import TitleBar from "../component/TitleBar";
 import { FaImage } from "react-icons/fa";
+import SortableItem from "../component/SortableItem";
 
 const ImageGallery = () => {
   const [images, setImages] = useState([]);
@@ -74,7 +75,24 @@ const ImageGallery = () => {
             onDelete={handleDelete}
             selectedImg={selectedImg}
           ></TitleBar>
-          <div className="grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 px-10 py-8"></div>
+          <div className="grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 px-10 py-8">
+            <SortableContext
+              items={images.map((image) => image.id)}
+              strategy={rectSortingStrategy}
+            >
+              {images.map((image, index) => (
+                <SortableItem
+                  image={image}
+                  index={index}
+                  key={image.id}
+                  id={image.id}
+                  selectedImg={selectedImg}
+                  setSelectedImg={setSelectedImg}
+                  className={index === 0 ? "col-span-2 row-span-2" : ""}
+                ></SortableItem>
+              ))}
+            </SortableContext>
+          </div>
         </section>
       </main>
     </DndContext>
