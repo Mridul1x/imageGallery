@@ -50,14 +50,31 @@ const ImageGallery = () => {
     setImages(updatedImages);
   };
 
+  //event handler on the DndContext provider in order to update the order of the items on drag end
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+    if (active.id !== over.id) {
+      setImages((items) => {
+        const oldIndex = items.findIndex((item) => item.id === active.id);
+        const newIndex = items.findIndex((item) => item.id === over.id);
+        return arrayMove(items, oldIndex, newIndex);
+      });
+    }
+  };
+
   return (
-    <DndContext collisionDetection={closestCorners} sensors={sensors}>
+    <DndContext
+      collisionDetection={closestCorners}
+      sensors={sensors}
+      onDragEnd={handleDragEnd}
+    >
       <main className="section-padding bg-[#ebeef5]">
         <section className="wrapper bg-[#fefefe] divide-y-4 rounded-lg">
           <TitleBar
             onDelete={handleDelete}
             selectedImg={selectedImg}
           ></TitleBar>
+          <div className="grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 px-10 py-8"></div>
         </section>
       </main>
     </DndContext>
