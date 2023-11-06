@@ -7,7 +7,15 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  rectSortingStrategy,
+} from "@dnd-kit/sortable";
+
+import TitleBar from "../component/TitleBar";
+import { FaImage } from "react-icons/fa";
 
 const ImageGallery = () => {
   const [images, setImages] = useState([]);
@@ -33,7 +41,9 @@ const ImageGallery = () => {
   return (
     <DndContext collisionDetection={closestCorners} sensors={sensors}>
       <main className="section-padding bg-[#ebeef5]">
-        <section className="wrapper bg-[#fefefe] divide-y-4 rounded-lg"></section>
+        <section className="wrapper bg-[#fefefe] divide-y-4 rounded-lg">
+          <TitleBar selectedImg={selectedImg}></TitleBar>
+        </section>
       </main>
     </DndContext>
   );
