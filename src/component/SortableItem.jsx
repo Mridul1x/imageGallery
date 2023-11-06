@@ -12,6 +12,15 @@ const SortableItem = ({
 }) => {
   const isSelected = selectedImg.includes(id);
 
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id });
+
   return <div></div>;
 };
 
