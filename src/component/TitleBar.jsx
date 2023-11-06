@@ -1,6 +1,11 @@
 import { FaCheckSquare } from "react-icons/fa";
 
-const TitleBar = ({ selectedImg }) => {
+const TitleBar = ({ selectedImg, onDelete }) => {
+  // delete images by id
+  const handleDelete = () => {
+    onDelete();
+  };
+
   return (
     <div>
       <div>
@@ -15,7 +20,10 @@ const TitleBar = ({ selectedImg }) => {
             </h1>
             {/* Delete Button */}
             <div>
-              <button className="text-xl font-bold text-red-600">
+              <button
+                onClick={handleDelete}
+                className="text-xl font-bold text-red-600"
+              >
                 Delete files
               </button>
             </div>

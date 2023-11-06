@@ -38,11 +38,26 @@ const ImageGallery = () => {
     })
   );
 
+  // Handle delete/filtering images by selected id
+  const handleDelete = () => {
+    let updatedImages = [...images];
+    if (selectedImg.length > 0) {
+      updatedImages = updatedImages.filter(
+        (image) => !selectedImg.includes(image.id)
+      );
+      setSelectedImg([]);
+    }
+    setImages(updatedImages);
+  };
+
   return (
     <DndContext collisionDetection={closestCorners} sensors={sensors}>
       <main className="section-padding bg-[#ebeef5]">
         <section className="wrapper bg-[#fefefe] divide-y-4 rounded-lg">
-          <TitleBar selectedImg={selectedImg}></TitleBar>
+          <TitleBar
+            onDelete={handleDelete}
+            selectedImg={selectedImg}
+          ></TitleBar>
         </section>
       </main>
     </DndContext>
