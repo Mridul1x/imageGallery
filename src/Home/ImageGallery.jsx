@@ -6,59 +6,59 @@ import {
   KeyboardSensor,
   useSensor,
   useSensors,
-} from "@dnd-kit/core";
+} from "@dnd-kit/core"; // Importing DndContext and related drag-and-drop functionality
 import {
   arrayMove,
   SortableContext,
   sortableKeyboardCoordinates,
   rectSortingStrategy,
-} from "@dnd-kit/sortable";
+} from "@dnd-kit/sortable"; // Importing sortable context and sorting strategy
 
-import TitleBar from "../component/TitleBar";
-import { FaImage } from "react-icons/fa";
-import SortableItem from "../component/SortableItem";
+import TitleBar from "../component/TitleBar"; // Importing the TitleBar component
+import { FaImage } from "react-icons/fa"; // Importing the FaImage icon
+import SortableItem from "../component/SortableItem"; // Importing the SortableItem component
 
 const ImageGallery = () => {
-  const [images, setImages] = useState([]);
-  const [selectedImg, setSelectedImg] = useState([]);
+  const [images, setImages] = useState([]); // State for storing images
+  const [selectedImg, setSelectedImg] = useState([]); // State for storing selected image IDs
 
   useEffect(() => {
     // Fetch images from the server
     fetch("http://localhost:5000/images")
       .then((res) => res.json())
       .then((data) => {
-        setImages(data);
+        setImages(data); // Update the images state with fetched data
       });
   }, []);
 
-  //keyboard and pointer sensors for drag and drop functionality
+  // Define sensors for drag-and-drop functionality (pointer and keyboard)
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
+      coordinateGetter: sortableKeyboardCoordinates, // Use keyboard coordinates for sorting
     })
   );
 
-  // Handle delete/filtering images by selected id
+  // Handle deletion/filtering of images by selected IDs
   const handleDelete = () => {
     let updatedImages = [...images];
     if (selectedImg.length > 0) {
       updatedImages = updatedImages.filter(
         (image) => !selectedImg.includes(image.id)
       );
-      setSelectedImg([]);
+      setSelectedImg([]); // Clear selected images after deletion
     }
-    setImages(updatedImages);
+    setImages(updatedImages); // Update the images state with the filtered images
   };
 
-  //event handler on the DndContext provider in order to update the order of the items on drag end
+  // Event handler for updating the order of items on drag end
   const handleDragEnd = (event) => {
     const { active, over } = event;
     if (active.id !== over.id) {
       setImages((items) => {
         const oldIndex = items.findIndex((item) => item.id === active.id);
         const newIndex = items.findIndex((item) => item.id === over.id);
-        return arrayMove(items, oldIndex, newIndex);
+        return arrayMove(items, oldIndex, newIndex); // Update the order of items
       });
     }
   };
@@ -69,7 +69,7 @@ const ImageGallery = () => {
       sensors={sensors}
       onDragEnd={handleDragEnd}
     >
-      <main className="section-padding   bg-[#ebeef5]">
+      <main className="section-padding bg-[#ebeef5]">
         <section className="wrapper bg-[#fefefe] divide-y-2 rounded-lg">
           <TitleBar
             onDelete={handleDelete}
@@ -105,4 +105,4 @@ const ImageGallery = () => {
   );
 };
 
-export default ImageGallery;
+export default ImageGallery; // Export the ImageGallery component
