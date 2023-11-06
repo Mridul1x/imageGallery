@@ -24,7 +24,7 @@ const ImageGallery = () => {
 
   useEffect(() => {
     // Fetch images from the server
-    fetch("http://localhost:5000/images")
+    fetch("https://image-gallery-server-theta.vercel.app/images")
       .then((res) => res.json())
       .then((data) => {
         setImages(data); // Update the images state with fetched data
