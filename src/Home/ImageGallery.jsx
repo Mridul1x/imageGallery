@@ -1,8 +1,17 @@
 import { useState, useEffect } from "react";
+import {
+  DndContext,
+  closestCorners,
+  PointerSensor,
+  KeyboardSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
+import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 
 const ImageGallery = () => {
   const [images, setImages] = useState([]);
- 
+  const [selectedImg, setSelectedImg] = useState([]);
 
   useEffect(() => {
     // Fetch images from the server
@@ -13,8 +22,20 @@ const ImageGallery = () => {
       });
   }, []);
 
+  //keyboard and pointer sensors for drag and drop functionality
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
   return (
-   <div>{images.length}</div>
+    <DndContext collisionDetection={closestCorners} sensors={sensors}>
+      <main className="section-padding bg-[#ebeef5]">
+        <section className="wrapper bg-[#fefefe] divide-y-4 rounded-lg"></section>
+      </main>
+    </DndContext>
   );
 };
 
