@@ -1,4 +1,4 @@
-import ImageGallery from "./Home/Pages/ImageGallery";
+import ImageGallery from "./Home/ImageGallery";
 
 function App() {
   return (
