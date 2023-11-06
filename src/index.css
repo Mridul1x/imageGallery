@@ -2,80 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+/* BROWSER STYLES */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(160, 179, 200, 0.5);
+  height: 10%;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a0b3c8;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(20, 22, 23, 0.8);
+}
+
+::selection {
+  color: #1d232a;
+  background-color: #a0b3c8;
+}
+
 html {
   --scroll-behavior: smooth !important;
   scroll-behavior: smooth !important;
 }
 
-.section-title {
-  @apply text-3xl lg:text-5xl uppercase;
-}
-
 /* COMMON STYLES */
 .wrapper {
-  @apply container mx-auto px-5 md:px-0;
+  @apply container mx-auto  md:px-0;
 }
 
 .section-padding {
-  @apply py-10 md:py-10;
+  @apply py-10 mx-5 md:py-10;
 }
 
-.photo1 {
-  background-image: linear-gradient(
-      to right,
-      rgba(107, 114, 128, 0.5),
-      rgba(17, 24, 39, 0.5)
-    ),
-    url("https://images.pexels.com/photos/7006682/pexels-photo-7006682.jpeg?auto=compress&cs=tinysrgb&w=1600");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.photo2 {
-  background-image: linear-gradient(
-      to right,
-      rgba(107, 114, 128, 0.5),
-      rgba(17, 24, 39, 0.5)
-    ),
-    url("https://images.pexels.com/photos/7565174/pexels-photo-7565174.jpeg?auto=compress&cs=tinysrgb&w=1600");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.photo3 {
-  background-image: linear-gradient(
-      to right,
-      rgba(107, 114, 128, 0.5),
-      rgba(17, 24, 39, 0.5)
-    ),
-    url("https://images.pexels.com/photos/7565163/pexels-photo-7565163.jpeg?auto=compress&cs=tinysrgb&w=1600");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.photo4 {
-  background-image: linear-gradient(
-      to right,
-      rgba(107, 114, 128, 0.5),
-      rgba(17, 24, 39, 0.5)
-    ),
-    url("https://images.pexels.com/photos/7565171/pexels-photo-7565171.jpeg?auto=compress&cs=tinysrgb&w=1600");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.photo5 {
-  background-image: linear-gradient(
-      to right,
-      rgba(107, 114, 128, 0.75),
-      rgba(17, 24, 39, 0.75)
-    ),
-    url("https://images.pexels.com/photos/7568428/pexels-photo-7568428.jpeg?auto=compress&cs=tinysrgb&w=1600");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+div[data-dnd-draggable] {
+  border: 2px solid #c8c8c8;
 }

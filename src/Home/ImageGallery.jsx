@@ -69,8 +69,8 @@ const ImageGallery = () => {
       sensors={sensors}
       onDragEnd={handleDragEnd}
     >
-      <main className="section-padding bg-[#ebeef5]">
-        <section className="wrapper bg-[#fefefe] divide-y-4 rounded-lg">
+      <main className="section-padding   bg-[#ebeef5]">
+        <section className="wrapper bg-[#fefefe] divide-y-2 rounded-lg">
           <TitleBar
             onDelete={handleDelete}
             selectedImg={selectedImg}
@@ -92,6 +92,12 @@ const ImageGallery = () => {
                 ></SortableItem>
               ))}
             </SortableContext>
+            <div className="bg-gray-50 border-dashed border-gray-300 border-2 flex flex-col gap-4 items-center justify-center rounded-lg p-10 cursor-pointer">
+              <FaImage className="h-7 w-7 text-gray-600" />
+              <p className="text-gray-600 text-center text-lg font-medium">
+                Add Images
+              </p>
+            </div>
           </div>
         </section>
       </main>
